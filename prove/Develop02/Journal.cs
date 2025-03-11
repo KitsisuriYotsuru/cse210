@@ -3,16 +3,15 @@ using System.IO;
 class Journal
 {
     private List<JournalEntry> _entries;
-    private List<string> _questions;
 
     public Journal()
     {
         _entries = [];
     }
 
-    public void AddEntry(JournalEntry entry)
+    public void AddNewEntry(JournalEntry journalEntry)
     {
-        _entries.Add(entry);
+        _entries.Add(journalEntry);
     }
 
     public void DisplayJournalEntries()
@@ -41,8 +40,10 @@ class Journal
         foreach (string line in lines)
         {
             string[] parts = line.Split('#');
+            Console.WriteLine(parts.Length);
             if (parts.Length == 3)
             {
+                Console.WriteLine("poggies");
                 JournalEntry entry = new JournalEntry(parts[0], parts[1], parts[2]);
                 _entries.Add(entry);
             }

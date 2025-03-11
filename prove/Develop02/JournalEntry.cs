@@ -4,6 +4,13 @@ class JournalEntry
     private string _question;
     private string _date;
 
+    public JournalEntry()
+    {
+        _date = "";
+        _question = "";
+        _entryText = "";
+    }
+
     public JournalEntry(string date, string question, string entryText)
     {
         _date = date;
@@ -11,10 +18,14 @@ class JournalEntry
         _entryText = entryText;
     }
 
-    public void CreateEntry(string question)
+    public void CreateEntry()
     {
-        string entryText = Console.ReadLine();
+        Questions questions = new Questions();
+        string question = questions.GetQuestion();
 
+        Console.WriteLine(question);
+        Console.Write("> ");
+        string entryText = Console.ReadLine();
         DateTime date = new DateTime();
 
         _date = date.ToShortDateString();
@@ -31,7 +42,7 @@ class JournalEntry
 
     public string CreateFileSystemString()
     {
-        string outputString = $"{_date}#{_question}#{_entryText}#";
+        string outputString = $"{_date}#{_question}#{_entryText}";
 
         return outputString;
     }
