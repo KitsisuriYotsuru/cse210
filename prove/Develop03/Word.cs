@@ -1,4 +1,5 @@
-public class Word {
+public class Word 
+{
     private string text;
     private bool isHidden;
 

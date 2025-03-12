@@ -1,7 +1,8 @@
-public class Reference {
+public class Reference 
+{
     private string book;
-    private int chapter;
-    private int verse;
+    private string chapter;
+    private string verse;
 
     // Property to get and set the book name
     public string Book {
@@ -10,19 +11,19 @@ public class Reference {
     }
 
     // Property to get and set the chapter number
-    public int Chapter {
+    public string Chapter {
         get { return chapter; }
         set { chapter = value; }
     }
 
     // Property to get and set the verse number
-    public int Verse {
+    public string Verse {
         get { return verse; }
         set { verse = value; }
     }
 
     // Constructor to initialize the Reference with book, chapter, and verse
-    public Reference(string book, int chapter, int verse) {
+    public Reference(string book, string chapter, string verse) {
         this.book = book;
         this.chapter = chapter;
         this.verse = verse;
