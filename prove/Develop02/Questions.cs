@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 class Questions 
 {
-    List<string> _questions;
+    private List<string> _questions;
     
     public Questions()
     {
