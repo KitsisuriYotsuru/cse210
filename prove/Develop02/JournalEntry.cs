@@ -26,9 +26,11 @@ class JournalEntry
         Console.WriteLine(question);
         Console.Write("> ");
         string entryText = Console.ReadLine();
-        DateTime date = new DateTime();
+        
+        // Fix the date to be the current date
+        DateTime date = DateTime.Now;
 
-        _date = date.ToShortDateString();
+        _date = date.ToString("MM/dd/yyyy");
         _question = question;
         _entryText = entryText;
     }

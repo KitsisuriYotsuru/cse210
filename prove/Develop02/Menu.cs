@@ -20,6 +20,7 @@ class Menu
     public string GetUserInput()
     {
         DisplayMenu();
+        Console.WriteLine("> ");
         string input = Console.ReadLine();
         return input;
     }
