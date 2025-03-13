@@ -1,11 +1,6 @@
 class Menu
 {
-    private List<Reference> references;
-    
-    public List<Reference> GetReferences() 
-    {
-        return references;
-    }
+    private List<Scripture> scriptures = new List<Scripture>();
 
     public Menu()
     {
@@ -14,12 +9,30 @@ class Menu
         {
             string[] scriptureParts = line.Split('#');
             string[] referenceParts = scriptureParts[0].Split(' ');
-            string book = referenceParts[0] + " " + referenceParts[1];
-            string chapter = referenceParts[2].Split(':')[0];
-            string verses = referenceParts[2].Split(':')[1];
-            references.Append(new Reference(book, chapter, verses));
+            if(referenceParts.Length == 3)
+            {
+                string book = referenceParts[0] + " " + referenceParts[1];
+                string chapter = referenceParts[2].Split(':')[0];
+                string verses = referenceParts[2].Split(':')[1];
+                Reference reference = new Reference(book, chapter, verses);
+                scriptures.Add(new Scripture(reference, scriptureParts[1]));
+                
+            } 
+            else if (referenceParts.Length == 2)
+            {
+                string book = referenceParts[0];
+                string chapter = referenceParts[1].Split(':')[0];
+                string verses = referenceParts[1].Split(':')[1];
+                Reference reference = new Reference(book, chapter, verses);
+                scriptures.Add(new Scripture(reference, scriptureParts[1]));            }
         }
-    }    
+    }
+
+    public List<Scripture> GetScriptures() 
+    {
+        return scriptures;
+    }
+
     public void DisplayMenu()
     {
         Console.WriteLine($"Welcome to the Scripture Memorizer");
@@ -31,8 +44,7 @@ class Menu
 
     public string GetUserInput()
     {
-        DisplayMenu();
-        Console.WriteLine("> ");
+        Console.Write("> ");
         string input = Console.ReadLine();
         return input;
     }

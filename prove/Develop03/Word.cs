@@ -1,12 +1,12 @@
 public class Word 
 {
-    private string text;
+    private string word;
     private bool isHidden;
 
     // Property to get and set the text of the word
-    public string Text {
-        get { return text; }
-        set { text = value; }
+    public string GetWordString {
+        get { return word; }
+        set { word = value; }
     }
 
     // Property to get and set the hidden status of the word
@@ -16,18 +16,13 @@ public class Word
     }
 
     // Constructor to initialize the Word with text
-    public Word(string text) {
-        this.text = text;
+    public Word(string word) {
+        this.word = word;
         this.isHidden = false;
     }
 
     // Method to hide the word
-    public void Hide() {
+    public void SetIsHidden() {
         IsHidden = true;
-    }
-
-    // Method to show the word
-    public void Show() {
-        IsHidden = false;
     }
 }
