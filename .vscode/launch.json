@@ -82,6 +82,19 @@
         },
 
         {
+            "name": "Person Project",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-PersonProject",
+            "program": "${workspaceFolder}/PersonProject/bin/Debug/net8.0/PersonProject.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/PersonProject",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        },
+
+        {
             "name": "Learning 02 (Resume)",
             "type": "coreclr",
             "request": "launch",
