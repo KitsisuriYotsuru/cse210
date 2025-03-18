@@ -6,7 +6,6 @@ class Program
     {
         Menu menu = new Menu();
         List<Scripture> scriptures = menu.GetScriptures();
-        int i = 1;
         bool exit = false;
         while (!exit)
         {
@@ -17,6 +16,7 @@ class Program
             switch (input)
             {
                 case "1":
+                    int i = 1;
                     Console.WriteLine("select a scripture you would like to memorize");
                     foreach(Scripture scripture in scriptures)
                     {
@@ -24,15 +24,15 @@ class Program
                         i++;
                     }
 
+                    input = menu.GetUserInput();
+                    Scripture selectedScripture = scriptures[int.Parse(input) - 1];
+                    Memorizer memorizer = new Memorizer(selectedScripture);
                     bool quit = false;
                     while(!quit)
                     {
-                        input = menu.GetUserInput();
-                        Scripture selectedScripture = scriptures[int.Parse(input) - 1];
-                        Console.WriteLine($"{selectedScripture.Reference.GetReference()} {selectedScripture.GetText()}");
-                        
+                        Console.Clear();
+                        quit = memorizer.RunMemorizer(menu);
                     }
-
                     break;
                 case "2":
                     Console.WriteLine("WIP");

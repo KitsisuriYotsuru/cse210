@@ -24,13 +24,43 @@ public class Scripture
 
     // Method to hide all words in the scripture
     public void HideWords() {
-        foreach (var word in words) {
-            word.SetIsHidden();
+        int i = 0;
+        List<Word> notHiddenWords = [];
+        foreach(Word word in words)
+        {
+            if(!word.IsHidden){notHiddenWords.Add(word);}
+        }
+        while(i < 3) {
+            Random random = new Random();
+            int randomIndex = random.Next(words.Count);
+            if(!words[randomIndex].IsHidden)
+            {
+                words[randomIndex].SetIsHidden();
+                i++;
+            } else if (notHiddenWords.Count < 3) {
+                foreach(Word word in notHiddenWords)
+                {
+                    word.SetIsHidden();
+                }
+                break;
+            }
         }
     }
 
     // Method to get the text of the scripture with hidden words replaced by underscores of the same length
     public string GetText() {
-        return string.Join(" ", words.Select(word => word.IsHidden ? new string('_', word.GetWordString.Length) : word.GetWordString));
+        return string.Join(" ", words.Select(word => {
+            if (word.IsHidden) {
+                if (int.TryParse(word.GetWordString, out _)) {
+                    return word.GetWordString;
+                }
+                if (word.GetWordString.EndsWith(",") || word.GetWordString.EndsWith(".")) {
+                    char punctuation = word.GetWordString.Last();
+                    return new string('_', word.GetWordString.Length - 1) + punctuation;
+                }
+                return new string('_', word.GetWordString.Length);
+            }
+            return word.GetWordString;
+        }));
     }
 }
